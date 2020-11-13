@@ -63,7 +63,7 @@ done
 cd ..
 
 echo linking final program...
-gcc -g -O2 -Wall -o nanovim.o evilize*/goodevil.o nano*/src/*.o vim*/src/objects/*.o nano*/lib/libgnu.a -lz -lmagic -lncursesw -lXaw -lXmu -lXext -lXt -lSM -lICE -lXpm -lXt -lX11 -ldl -lm -lncurses -lelf -lacl -lattr -ldl
+gcc -g -O2 -Wl,--allow-multiple-definition -o nanovim.o evilize*/goodevil.o nano*/src/*.o vim*/src/objects/*.o nano*/lib/libgnu.a -lz -lmagic -lncursesw -lXaw -lXmu -lXext -lXt -lSM -lICE -lXpm -lXt -lX11 -ldl -lm -lncurses -lelf -lacl -lattr -ldl
 
 echo evilizing nanovim into nano and vim...
 mkdir bin
