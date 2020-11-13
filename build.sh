@@ -16,7 +16,7 @@ wget -q https://github.com/vim/vim/archive/v8.1.1661.tar.gz -O vim-8.1.1661.tar.
 
 echo extracting sources...
 for tar in *.tar.*; do
-    tar xf $tar
+	tar xf $tar
 done
 
 cd ./evilize*/
@@ -37,9 +37,9 @@ make >/dev/null 2>&1
 
 echo renaming nano symbols...
 for obj in $(find -name *.o); do
-    for sym in close_buffer open_buffer edit write_list do_mouse do_search; do
-        objcopy --redefine-sym $sym=nano_$sym $obj
-    done
+	for sym in close_buffer open_buffer edit write_list do_mouse do_search; do
+		objcopy --redefine-sym $sym=nano_$sym $obj
+	done
 done
 
 cd ../vim*/
@@ -55,9 +55,9 @@ make >/dev/null 2>&1
 
 echo renaming vim symbols...
 for obj in $(find -name *.o); do
-    for sym in close_buffer open_buffer edit write_list do_mouse do_search; do
-        objcopy --redefine-sym $sym=vim_$sym $obj
-    done
+	for sym in close_buffer open_buffer edit write_list do_mouse do_search; do
+		objcopy --redefine-sym $sym=vim_$sym $obj
+	done
 done
 
 cd ..
@@ -68,3 +68,8 @@ gcc -g -O2 -Wl,--allow-multiple-definition -o nanovim.o evilize*/goodevil.o nano
 echo evilizing nanovim into nano and vim...
 mkdir bin
 ./evilize*/evilize nanovim.o -g bin/nano -e bin/vim
+
+chmod +x bin/*
+
+echo md5sums:
+md5sum bin/*
