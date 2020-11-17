@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Deps
+        run: sudo apt install -y libncursesw5-dev libxaw7-dev
+
       - name: Build
         run: bash ./build.sh
 
