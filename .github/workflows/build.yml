@@ -1,9 +1,7 @@
 on:
   push:
-    tags:
-    - '*'
 
-name: Upload Release Asset
+name: Build
 
 jobs:
   build:
